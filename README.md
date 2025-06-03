@@ -9,18 +9,18 @@
 - **프레임워크**: Hardhat + TypeScript
 - **라이브러리**: ethers.js v5
 
-## 🏗️ 프로젝트 구조
+## 🏗️ 프로젝트 구조 (간소화!)
 
 ```
 Election_Dapp/
 ├── contracts/                 # 스마트 컨트랙트
 │   └── election.sol          # 메인 투표 컨트랙트
-├── scripts/                  # 실행 스크립트 (2개로 통합!)
-│   ├── main_voting_automation.ts    # 🚀 전체 자동화 스크립트
-│   └── check_and_test.ts           # 🔍 결과 확인 + 함수 테스트 통합
+├── scripts/                  # 실행 스크립트 (2개만!)
+│   ├── main_voting_automation.ts    # 🚀 전체 자동화
+│   └── check_results.ts            # 🔍 결과 확인 (간단!)
 ├── artifacts/                # 컴파일된 컨트랙트
 ├── cache/                    # Hardhat 캐시
-└── config files...           # 설정 파일들
+└── hardhat.config.js         # Hardhat 설정
 ```
 
 ## ⚡ 빠른 시작
@@ -52,33 +52,25 @@ npx ts-node scripts/main_voting_automation.ts
 - 📢 공식 결과 블록체인 기록
 - 📊 상세 결과 보고서
 
-### 3️⃣ 결과 확인 및 테스트
+### 3️⃣ 간단한 결과 확인
 
 ```bash
-# 🔍 공개 결과 확인 (누구나 실행 가능)
-npx ts-node scripts/check_and_test.ts
-
-# 🔧 컨트랙트 함수 테스트 (배포자 권한 필요)
-npx ts-node scripts/check_and_test.ts test
+# 🔍 투표 결과 확인 (누구나 실행 가능)
+npx ts-node scripts/check_results.ts
 ```
 
-## 🎯 주요 기능
+## 📁 스크립트 설명 (단순화!)
 
-### ✅ **완전 자동화**
-- 8개 지갑을 이용한 멀티 사용자 시뮬레이션
-- 실제 가스비를 사용한 진짜 블록체인 거래
-- 전략적 투표 패턴 (4:3:1 비율로 명확한 승부)
+### 🚀 `main_voting_automation.ts`
+**전체 투표 시나리오 자동화 실행**
+- 컨트랙트 배포부터 결과 발표까지 원클릭 실행
+- 8명의 투표자가 참여하는 현실적인 시뮬레이션
 
-### ✅ **투명성 보장**
-- 모든 투표가 블록체인에 영구 기록
-- 누구나 Etherscan에서 결과 확인 가능
-- 변경 불가능한 결과 보장
-
-### ✅ **향상된 기능**
-- 📝 수동 투표 종료 (시간 기반 + 관리자 종료)
-- 📢 공식 결과 발표 및 블록체인 기록
-- 🔍 상세한 결과 조회 기능
-- 📊 실시간 투표 현황 확인
+### 🔍 `check_results.ts` ⭐ **새로 단순화!**
+**간단한 결과 확인**
+- 누구나 실행 가능 (지갑 불필요)
+- 투표 결과만 깔끔하게 표시
+- 복잡한 테스트 기능 제거
 
 ## 📊 최근 실행 결과
 
@@ -91,33 +83,17 @@ npx ts-node scripts/check_and_test.ts test
 
 **🔗 Etherscan**: https://sepolia.etherscan.io/address/0x096bdA2a4689DfAc70A64c6e49d6cdc06B4B8608
 
-## 📁 스크립트 설명
+## 🎯 주요 기능
 
-### 🚀 `main_voting_automation.ts`
-**전체 투표 시나리오 자동화 실행**
-- 컨트랙트 배포부터 결과 발표까지 원클릭 실행
-- 8명의 투표자가 참여하는 현실적인 시뮬레이션
-- 4:3:1 비율의 전략적 투표 패턴
+### ✅ **완전 자동화**
+- 8개 지갑을 이용한 멀티 사용자 시뮬레이션
+- 실제 가스비를 사용한 진짜 블록체인 거래
+- 전략적 투표 패턴 (4:3:1 비율로 명확한 승부)
 
-### 🔍 `check_and_test.ts` ⭐ **새로 통합!**
-**결과 확인 + 컨트랙트 함수 테스트 통합**
-
-**📖 읽기 모드 (기본)**:
-```bash
-npx ts-node scripts/check_and_test.ts
-```
-- 누구나 실행 가능한 공개 결과 조회
-- Etherscan 확인 방법 안내
-- 투명성 보장 확인
-- 지갑 연결 불필요
-
-**🔧 테스트 모드**:
-```bash
-npx ts-node scripts/check_and_test.ts test
-```
-- 배포자 권한으로 컨트랙트 함수 테스트
-- 수동 종료, 결과 발표 등 고급 기능 테스트
-- 상세 결과 조회 및 검증
+### ✅ **투명성 보장**
+- 모든 투표가 블록체인에 영구 기록
+- 누구나 Etherscan에서 결과 확인 가능
+- 변경 불가능한 결과 보장
 
 ## 🔧 기술 스택
 
@@ -135,13 +111,32 @@ npx ts-node scripts/check_and_test.ts test
 - ✅ **변경 불가능**
 - ✅ **실시간 검증 가능**
 
-## 💡 업데이트 내역
+## 💡 v3.0 - 극단적 단순화 ⭐
 
-### v2.0 - 스크립트 통합 ⭐
-- `check_public_results.ts` + `test_contract_functions.ts` → `check_and_test.ts`로 통합
-- 모드 선택으로 읽기 전용 / 테스트 모드 구분
-- 클래스 기반으로 코드 구조 개선
-- 더 깔끔한 사용자 경험
+### 🔄 **변경사항**
+- **이전**: 복잡한 테스트 기능들 + 여러 스크립트
+- **현재**: 핵심 기능만! 2개 스크립트!
+
+### 🗑️ **제거된 것들**
+- ❌ 복잡한 테스트 기능들
+- ❌ test/ 폴더
+- ❌ tests/ 폴더  
+- ❌ deps/ 폴더
+- ❌ 불필요한 파일들
+
+### ✨ **남은 핵심 기능**
+- ✅ 전체 자동화 투표 (`main_voting_automation.ts`)
+- ✅ 간단한 결과 확인 (`check_results.ts`)
+- ✅ 메인 스마트 컨트랙트 (`election.sol`)
+
+### 📱 **초간단 사용법**
+```bash
+# 1. 투표 실행
+npx ts-node scripts/main_voting_automation.ts
+
+# 2. 결과 확인  
+npx ts-node scripts/check_results.ts
+```
 
 ## 📞 문의
 

@@ -74,6 +74,12 @@ contract Voting {
      uint public candidateCount; //후보자 수
      uint public totalVotes; //총 투표 수
 
+    // 🎯 간단 조회용 public 변수들 (이더스캔에서 바로 확인 가능)
+    string public officialWinner = "";           // 공식 승자 이름
+    uint public officialWinnerVotes = 0;         // 승자 득표수  
+    bool public officialResultAnnounced = false; // 결과 발표 여부
+    string public electionSummary = "";          // 한줄 요약
+
 //제한자 설명
     modifier onlyOwner(){
         require(msg.sender == owner, "Only owner can call this function");
@@ -164,6 +170,14 @@ contract Voting {
             timestamp: block.timestamp,
             announced: true
         });
+        
+        // 🎯 간단 조회용 변수들 업데이트 (이더스캔에서 바로 확인 가능)
+        officialWinner = winnerName;
+        officialWinnerVotes = winningVoteCount;
+        officialResultAnnounced = true;
+        electionSummary = string(abi.encodePacked(
+            winnerName, " WON with ", uint2str(winningVoteCount), "/", uint2str(totalVotes), " votes"
+        ));
         
         emit WinnerAnnounced(winnerName, winningVoteCount, totalVotes, block.timestamp);
         
