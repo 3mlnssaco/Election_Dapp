@@ -1,0 +1,48 @@
+{
+  "name": "election_dapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "hardhat test",
+    "test:mytoken": "hardhat test test/MyToken.test.js",
+    "compile": "hardhat compile",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "node": "hardhat node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3mlnssaco/Election_Dapp.git"
+  },
+  "keywords": [
+    "blockchain",
+    "ethereum",
+    "smart-contract",
+    "token"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/3mlnssaco/Election_Dapp/issues"
+  },
+  "homepage": "https://github.com/3mlnssaco/Election_Dapp#readme",
+  "description": "Election DApp with MyToken ERC20 implementation",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.3.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-verify": "^2.0.14",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-etherscan": "^3.1.8",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@types/node": "^22.15.29",
+    "chai": "^5.2.0",
+    "ethereum-waffle": "^4.0.10",
+    "ethers": "^5.8.0",
+    "hardhat": "^2.24.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
